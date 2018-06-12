@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ViewController,NavParams } from 'ionic-angular';
+import { ModalController, ViewController } from 'ionic-angular';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
-
 import {ContactosService} from '../../app/services/contactos.service';
 
 
@@ -15,9 +14,8 @@ export class ModalContactosComponent implements OnInit {
 
   constructor(public viewCtrl: ViewController,
               private contacts: Contacts,
-              private _contactosService:ContactosService,
-              private params: NavParams) {
-              this.listaContactos=params.get('contactos');
+              private _contactosService:ContactosService) {
+                this.listaContactos=this._contactosService.getContactos();
 
 
  }
