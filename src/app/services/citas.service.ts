@@ -17,4 +17,10 @@ export class CitasService {
         console.log(res.json())
       })
   }
+
+
+  getCitas(){
+    return this.http.get(this.url)
+      .map(res=>res.json())
+  }
 }

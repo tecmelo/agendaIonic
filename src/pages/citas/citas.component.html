@@ -6,6 +6,7 @@
 
 <ion-content padding>
   <ion-calendar [(ngModel)]="dateRange"
+              (onChange)="onChange($event)"
               [options]="optionsRange"
               [type]="type"
               [format]="'YYYY-MM-DD'">
@@ -13,22 +14,32 @@
 
 <ion-list>
   <ion-list-header>
-    Action
-  </ion-list-header>
-
-  <button ion-item>hoka 1</button>
-  <button ion-item>hoka 1</button>
-  <ion-list-header>
     Citas
   </ion-list-header>
+  <button ion-item *ngFor="let cita of citas">{{cita.titulo}}</button>
 
-  <button ion-item>hoka 1</button>
-  <button ion-item>hoka 1</button>
+
+  <ion-list-header>
+    Juntas
+  </ion-list-header>
+  <button ion-item *ngFor="let junta of juntas">{{junta.titulo}}</button>
+
+
   <ion-list-header>
     Entrega de Proyecto
   </ion-list-header>
+  <button ion-item *ngFor="let proyecto of proyectos">{{proyecto.titulo}}</button>
 
-  <button ion-item>hoka 1</button>
+  <ion-list-header>
+    Examen
+  </ion-list-header>
+  <button ion-item *ngFor="let examen of examenes">{{examen.titulo}}</button>
+
+  <ion-list-header>
+    Otro
+  </ion-list-header>
+  <button ion-item *ngFor="let otro of otro">{{otro.titulo}}</button>
+
 
 </ion-list>
 
