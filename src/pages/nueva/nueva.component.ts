@@ -9,25 +9,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 })
 export class NuevaComponent implements OnInit {
   listaContactos:any;
-  constructor(public modalCtrl: ModalController,
-              private contacts: Contacts) {
-
-                this.contacts.find(["*"])
-                   .then(res => {
-                     let datosMostar:any[]=[];
-                     res.map((item) =>{
-                       if(item.displayName != null && item.phoneNumbers != null){
-                         datosMostar.push({displayName:item.displayName,phoneNumbers:item.phoneNumbers})
-                       }
-                     })
-                     this.listaContactos = datosMostar;
-                   },error => {
-                     console.log({error:error})
-                   })
-
-                   console.log(this.listaContactos)
-
-
+  constructor(public modalCtrl: ModalController) {
 
                }
 

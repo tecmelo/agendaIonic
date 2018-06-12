@@ -11,5 +11,15 @@
 
 <ion-content padding>
 
-
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let contacto of listaContactos">
+      <ion-avatar item-start>
+        <ion-icon name="contact"></ion-icon>
+      </ion-avatar>
+      <h2>{{contacto.displayName }}</h2>
+      <p>{{contacto.phoneNumbers[0].value}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
 </ion-content>
