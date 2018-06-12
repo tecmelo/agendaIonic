@@ -15,6 +15,10 @@ import {CitasComponent} from '../pages/citas/citas.component';
 import {NuevaComponent} from '../pages/nueva/nueva.component';
 import {ModalContactosComponent} from '../pages/modal-contactos/modal-contactos.component';
 import {CitasService} from './services/citas.service';
+import { CalendarModule } from "ion2-calendar";
+
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -29,7 +33,8 @@ import {CitasService} from './services/citas.service';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

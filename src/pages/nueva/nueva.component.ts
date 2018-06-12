@@ -3,6 +3,7 @@ import { ModalController, NavParams } from 'ionic-angular';
 import {ModalContactosComponent} from '../modal-contactos/modal-contactos.component';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 import {CitasService} from '../../app/services/citas.service';
+import { AlertController } from 'ionic-angular';
 @Component({
   selector: 'app-nueva',
   templateUrl: 'nueva.component.html',
@@ -22,7 +23,9 @@ export class NuevaComponent implements OnInit {
     invitados:[]
   }
   constructor(public modalCtrl: ModalController,
-              private _citasService:CitasService) {
+              private _citasService:CitasService,
+              private alertCtrl: AlertController) {
+
     console.log(this.nuevaCita.invitados)
 
                }
@@ -31,7 +34,28 @@ export class NuevaComponent implements OnInit {
 
   guardaCita(){
     console.log(this.nuevaCita);
-    this._citasService.agregaCita(this.nuevaCita).subscribe(data=>{})
+    this._citasService.agregaCita(this.nuevaCita).subscribe(data=>{
+      let alert = this.alertCtrl.create({
+title: 'Confirmación',
+subTitle: 'La el evento '+this.nuevaCita.titulo+" se ha guardado",
+buttons: ['Aceptar']
+});
+alert.present()
+
+    this.nuevaCita={
+      titulo:"",
+      lugar:"",
+      tipo:"",
+      descripcion:"",
+      fechaInicio:"",
+      fechaTermino:"",
+      hora:"",
+      invitados:[]
+    }
+    })
+
+
+
   }
 
   deleteInvitado(invitado){
@@ -52,4 +76,7 @@ export class NuevaComponent implements OnInit {
     });
     profileModal.present();
   }
+
+
+  
 }
