@@ -11,7 +11,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 export class ModalContactosComponent implements OnInit {
   listaContactos:any;
 
-  
+
   constructor(public viewCtrl: ViewController,
               private contacts: Contacts) {
 
@@ -35,9 +35,9 @@ export class ModalContactosComponent implements OnInit {
 
   ngOnInit() {}
 
-  dismiss() {
-  let data = { 'foo': 'bar' };
-  this.viewCtrl.dismiss(data);
+  dismiss(contacto) {
+
+  this.viewCtrl.dismiss(contacto);
 }
 
 }

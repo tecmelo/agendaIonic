@@ -9,6 +9,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 })
 export class NuevaComponent implements OnInit {
   listaContactos:any;
+  invitados=[];
   constructor(public modalCtrl: ModalController) {
 
                }
@@ -19,7 +20,7 @@ export class NuevaComponent implements OnInit {
     presentProfileModal() {
     let profileModal = this.modalCtrl.create(ModalContactosComponent);
     profileModal.onDidDismiss(data => {
-      console.log(data);
+      if(data){this.invitados.push(data);}      
     });
     profileModal.present();
   }

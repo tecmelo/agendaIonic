@@ -40,26 +40,13 @@
     <button ion-button full (click)="presentProfileModal()">Agregar Invitados</button>
 
 
-    <ion-chip #chip2>
-      <ion-label>With Icon</ion-label>
+    <ion-chip #chip2 *ngFor="let invitado of invitados">
+      <ion-label>{{invitado.displayName}}</ion-label>
       <button ion-button>
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-chip>
 
-    <ion-chip #chip2>
-      <ion-label>With Icon</ion-label>
-      <button ion-button>
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-chip>
-
-    <ion-chip #chip2>
-      <ion-label>With Icon</ion-label>
-      <button ion-button>
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-chip>
 
 
     <ion-row>
