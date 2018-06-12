@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ViewController } from 'ionic-angular';
+import { ModalController, ViewController,NavParams } from 'ionic-angular';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 
+import {ContactosService} from '../../app/services/contactos.service';
 
 
 @Component({
@@ -13,23 +14,11 @@ export class ModalContactosComponent implements OnInit {
 
 
   constructor(public viewCtrl: ViewController,
-              private contacts: Contacts) {
+              private contacts: Contacts,
+              private _contactosService:ContactosService,
+              private params: NavParams) {
+              this.listaContactos=params.get('contactos');
 
-
-                                this.contacts.find(["*"])
-                                   .then(res => {
-                                     let datosMostar:any[]=[];
-                                     res.map((item) =>{
-                                       if(item.displayName != null && item.phoneNumbers != null){
-                                         datosMostar.push({displayName:item.displayName,phoneNumbers:item.phoneNumbers})
-                                       }
-                                     })
-                                     this.listaContactos = datosMostar;
-                                   },error => {
-                                     console.log({error:error})
-                                   })
-
-                                   console.log(this.listaContactos)
 
  }
 

@@ -7,7 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import {ContactosService} from './services/contactos.service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {CitasComponent} from '../pages/citas/citas.component';
@@ -42,6 +42,7 @@ import {ModalContactosComponent} from '../pages/modal-contactos/modal-contactos.
   ],
   providers: [
     StatusBar,
+    ContactosService,
     SplashScreen,
     Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
