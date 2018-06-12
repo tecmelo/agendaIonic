@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {CitasComponent} from '../pages/citas/citas.component';
 import {NuevaComponent} from '../pages/nueva/nueva.component';
+import {ModalContactosComponent} from '../pages/modal-contactos/modal-contactos.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {NuevaComponent} from '../pages/nueva/nueva.component';
     AboutPage,
     ContactPage,
     HomePage,
+    ModalContactosComponent,
     NuevaComponent,
     CitasComponent,
     TabsPage
@@ -33,6 +35,7 @@ import {NuevaComponent} from '../pages/nueva/nueva.component';
     AboutPage,
     ContactPage,
     HomePage,
+    ModalContactosComponent,
     CitasComponent,
     NuevaComponent,
     TabsPage
