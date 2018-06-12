@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Agregar Cita</ion-title>
+    <ion-title>Editar Cita</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,18 +10,18 @@
     <ion-item>
       <ion-label floating>Titulo</ion-label>
       <ion-input
-          type="text" [(ngModel)]="nuevaCita.titulo" name="titulo"></ion-input>
+          type="text" [(ngModel)]="cita.titulo" name="titulo"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Lugar</ion-label>
       <ion-input
-          type="text" [(ngModel)]="nuevaCita.lugar" name="lugar"></ion-input>
+          type="text" [(ngModel)]="cita.lugar" name="lugar"></ion-input>
     </ion-item>
 
     <ion-item>
   <ion-label>Tipo de Evento</ion-label>
-  <ion-select [(ngModel)]="nuevaCita.tipo" name="tipo">
+  <ion-select [(ngModel)]="cita.tipo" name="tipo">
     <ion-option value="cita">Cita</ion-option>
     <ion-option value="examen">Examen</ion-option>
     <ion-option value="proyecto">Entrega de Proyecto</ion-option>
@@ -32,30 +32,31 @@
 
     <ion-item>
       <ion-label floating>Descripción</ion-label>
-      <ion-textarea [(ngModel)]="nuevaCita.descripcion" name="descripcion"></ion-textarea>
+      <ion-textarea [(ngModel)]="cita.descripcion" name="descripcion"></ion-textarea>
     </ion-item>
 
 
     <ion-item>
   <ion-label>Fecha Inicio</ion-label>
-  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY" [(ngModel)]="nuevaCita.fechaInicio" name="fechaInicio"></ion-datetime>
+  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY" [(ngModel)]="cita.fechaInicio" name="fechaInicio"></ion-datetime>
 </ion-item>
 
 <ion-item>
 <ion-label>Fecha Termino</ion-label>
-<ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY" [(ngModel)]="nuevaCita.fechaTermino" name="fechaTermino"></ion-datetime>
+<ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY" [(ngModel)]="cita.fechaTermino" name="fechaTermino"></ion-datetime>
 </ion-item>
 
 <ion-item>
 <ion-label>Hora Inicio</ion-label>
-<ion-datetime displayFormat="	HH:mm" pickerFormat="	HH:mm" [(ngModel)]="nuevaCita.hora" name="hora"></ion-datetime>
+<ion-datetime displayFormat="	HH:mm" pickerFormat="	HH:mm" [(ngModel)]="cita.hora" name="hora"></ion-datetime>
 </ion-item>
 
 
-    <button ion-button full (click)="presentProfileModal()">Agregar Invitados</button>
+
+    <button ion-button full (click)="presentProfileModalContacto()">Agregar Invitados</button>
 
 
-    <ion-chip #chip2 *ngFor="let invitado of nuevaCita.invitados">
+    <ion-chip #chip2 *ngFor="let invitado of cita.invitados">
       <ion-label>{{invitado.displayName}}</ion-label>
       <button ion-button>
         <ion-icon name="close" (click)="deleteInvitado(invitado)"></ion-icon>
@@ -66,8 +67,8 @@
 
     <ion-row>
   <ion-col text-center>
-    <button ion-button block color="secondary" (click)="guardaCita()">
-      Agregar
+    <button ion-button block color="secondary" (click)="editaCita()">
+      Editar
     </button>
   </ion-col>
 </ion-row>

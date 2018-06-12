@@ -16,7 +16,7 @@ import {NuevaComponent} from '../pages/nueva/nueva.component';
 import {ModalContactosComponent} from '../pages/modal-contactos/modal-contactos.component';
 import {CitasService} from './services/citas.service';
 import { CalendarModule } from "ion2-calendar";
-
+import {EditarComponent} from '../pages/editar/editar.component';
 
 
 @NgModule({
@@ -28,6 +28,7 @@ import { CalendarModule } from "ion2-calendar";
     ModalContactosComponent,
     NuevaComponent,
     CitasComponent,
+    EditarComponent,
     TabsPage
   ],
   imports: [
@@ -45,6 +46,7 @@ import { CalendarModule } from "ion2-calendar";
     ModalContactosComponent,
     CitasComponent,
     NuevaComponent,
+    EditarComponent,
     TabsPage
   ],
   providers: [

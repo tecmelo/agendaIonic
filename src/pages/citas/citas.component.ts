@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarComponentOptions } from 'ion2-calendar'
+import { ModalController, NavParams } from 'ionic-angular';
+import {EditarComponent} from '../editar/editar.component';
+
 import {CitasService} from '../../app/services/citas.service';
 @Component({
   selector: 'app-citas',
@@ -23,7 +26,8 @@ fechaIinial:any;
 fechaFinal:any;
 
 
-  constructor(private _citasService:CitasService) {
+  constructor(private _citasService:CitasService,
+              public modalCtrl: ModalController) {
     this.actualizaLista()
   }
 
@@ -127,6 +131,20 @@ fechaFinal:any;
   sumarDias(fecha, dias){
   fecha.setDate(fecha.getDate() + dias);
   return fecha;
+}
+
+editaCita(cita){
+  console.log(cita)
+  this.presentProfileModal(cita)
+
+}
+
+presentProfileModal(cita) {
+let profileModal = this.modalCtrl.create(EditarComponent,{cita:cita});
+profileModal.onDidDismiss(data => {
+
+});
+profileModal.present();
 }
 
 

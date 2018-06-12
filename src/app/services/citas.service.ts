@@ -23,4 +23,8 @@ export class CitasService {
     return this.http.get(this.url)
       .map(res=>res.json())
   }
+
+  editaCita(cita){
+
+  }
 }
