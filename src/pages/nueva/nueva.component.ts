@@ -9,8 +9,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 })
 export class NuevaComponent implements OnInit {
   listaContactos:any;
-  constructor(public modalCtrl: ModalController,
-              private contacts: Contacts) {
+  constructor(public modalCtrl: ModalController) {
                 //
                 // this.contacts.find(["*"])
                 //    .then(res => {
