@@ -16,6 +16,7 @@ export class ModalContactosComponent implements OnInit {
               private contacts: Contacts,
               private _contactosService:ContactosService) {
                 this.listaContactos=this._contactosService.getContactos();
+                
 
 
  }

@@ -7,13 +7,14 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import {HttpModule} from '@angular/http';
 import {ContactosService} from './services/contactos.service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {CitasComponent} from '../pages/citas/citas.component';
 import {NuevaComponent} from '../pages/nueva/nueva.component';
 import {ModalContactosComponent} from '../pages/modal-contactos/modal-contactos.component';
-
+import {CitasService} from './services/citas.service';
 @NgModule({
   declarations: [
     MyApp,
@@ -27,6 +28,7 @@ import {ModalContactosComponent} from '../pages/modal-contactos/modal-contactos.
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -43,6 +45,7 @@ import {ModalContactosComponent} from '../pages/modal-contactos/modal-contactos.
   providers: [
     StatusBar,
     ContactosService,
+    CitasService,
     SplashScreen,
     Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

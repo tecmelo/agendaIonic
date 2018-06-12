@@ -10,40 +10,54 @@
     <ion-item>
       <ion-label floating>Titulo</ion-label>
       <ion-input
-          type="text"></ion-input>
+          type="text" [(ngModel)]="nuevaCita.titulo" name="titulo"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Lugar</ion-label>
       <ion-input
-          type="text"></ion-input>
+          type="text" [(ngModel)]="nuevaCita.lugar" name="lugar"></ion-input>
     </ion-item>
+
+    <ion-item>
+  <ion-label>Tipo de Evento</ion-label>
+  <ion-select [(ngModel)]="nuevaCita.tipo" name="tipo">
+    <ion-option value="cita">Cita</ion-option>
+    <ion-option value="examen">Examen</ion-option>
+    <ion-option value="proyecto">Entrega de Proyecto</ion-option>
+    <ion-option value="junta">Junta</ion-option>
+    <ion-option value="otro">Otro</ion-option>
+  </ion-select>
+</ion-item>
 
     <ion-item>
       <ion-label floating>Descripción</ion-label>
-      <ion-textarea></ion-textarea>
+      <ion-textarea [(ngModel)]="nuevaCita.descripcion" name="descripcion"></ion-textarea>
     </ion-item>
 
 
     <ion-item>
-      <ion-label >Fecha</ion-label>
-      <ion-input
-          type="date"></ion-input>
-    </ion-item>
+  <ion-label>Fecha Inicio</ion-label>
+  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY" [(ngModel)]="nuevaCita.fechaInicio" name="fechaInicio"></ion-datetime>
+</ion-item>
 
-    <ion-item>
-      <ion-label>Hora</ion-label>
-      <ion-input
-          type="time"></ion-input>
-    </ion-item>
+<ion-item>
+<ion-label>Fecha Termino</ion-label>
+<ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD-MM-YYYY" [(ngModel)]="nuevaCita.fechaTermino" name="fechaTermino"></ion-datetime>
+</ion-item>
+
+<ion-item>
+<ion-label>Hora</ion-label>
+<ion-datetime displayFormat="	HH:mm" pickerFormat="	HH:mm" [(ngModel)]="nuevaCita.hora" name="hora"></ion-datetime>
+</ion-item>
 
     <button ion-button full (click)="presentProfileModal()">Agregar Invitados</button>
 
 
-    <ion-chip #chip2 *ngFor="let invitado of invitados">
+    <ion-chip #chip2 *ngFor="let invitado of nuevaCita.invitados">
       <ion-label>{{invitado.displayName}}</ion-label>
       <button ion-button>
-        <ion-icon name="close"></ion-icon>
+        <ion-icon name="close" (click)="deleteInvitado(invitado)"></ion-icon>
       </button>
     </ion-chip>
 
@@ -51,7 +65,7 @@
 
     <ion-row>
   <ion-col text-center>
-    <button ion-button block color="secondary">
+    <button ion-button block color="secondary" (click)="guardaCita()">
       Agregar
     </button>
   </ion-col>
