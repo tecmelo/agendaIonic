@@ -13,34 +13,10 @@
 </ion-calendar>
 
 <ion-list>
-<!--
-    <ion-item-sliding>
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="img/slimer.png">
-        </ion-avatar>
-        <h2>Slimer</h2>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-        <button ion-button color="secondary">
-          <ion-icon name="create"></ion-icon>
-        </button>
-      </ion-item-options>
-
-    </ion-item-sliding>
-
-
-
-
-
-
     <ion-item-sliding *ngFor="let cita of citas" >
       <ion-item>
         <ion-avatar item-start>
-          <img src="img/slimer.png">
+          <ion-icon name="create"></ion-icon>
         </ion-avatar>
         <h2>{{cita.titulo}}</h2>
       </ion-item>
@@ -53,7 +29,7 @@
         </button>
       </ion-item-options>
 
-    </ion-item-sliding> -->
+    </ion-item-sliding>
 
 
   <ion-list-header>

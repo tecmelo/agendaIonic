@@ -89,8 +89,8 @@ fechaFinal:any;
   }
 
   onChange($event){
-    let from=new Date(this.dateRange.from._d)
-    let to=new Date(this.dateRange.to._d)
+    let from=$event.from._d
+    let to=$event.to._d
     let filtro=this.getEventosOnRange(from,to);
     console.log(filtro);
 
@@ -111,18 +111,14 @@ fechaFinal:any;
 
   getEventosOnRange(from,to){
     let citasFiltradas=[];
-
-    for(let cita of this.eventos){
-      let cta=this.sumarDias(new Date(cita.fechaInicio),1) ;
-      let to2=this.sumarDias(new Date(to),1)
-      console.log(to2)
-      if(cta.getTime()<=to2.getTime() && cta.getTime()>=from.getTime()){
-        citasFiltradas.push(cita);
-        console.log(cita.fechaInicio,"   ",cta)
+      for(let cita of this.eventos){
+        let cta=this.sumarDias(new Date(cita.fechaInicio),1)
+        cta.setHours(0);
+        console.log(cta,"  ",from," ",to)
+        if(cta.getTime()<=to.getTime() && cta.getTime()>=from.getTime()){
+          citasFiltradas.push(cita);
+        }
       }
-    }
-
-
     return citasFiltradas;
 
 

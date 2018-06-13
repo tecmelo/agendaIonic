@@ -22,7 +22,7 @@ export class EditarComponent implements OnInit {
     };
 
   constructor(private params:NavParams) {
-    this.cita=this.params.get('cita');
+    //this.cita=this.params.get('cita');
     console.log(this.cita);
 
    }
