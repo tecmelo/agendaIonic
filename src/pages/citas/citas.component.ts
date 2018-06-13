@@ -41,14 +41,11 @@ today:any=null;
             this.actualizaLista();
 
             this.localNotifications.schedule({
-  id: 1,
-  text: 'Single ILocalNotification',
-  data: { secret: "Holas" }
-});
-
-
-
-
+               text: 'Delayed ILocalNotification',
+               trigger: {at: new Date(new Date().getTime() + 1)},
+               led: 'FF0000',
+               sound: null
+            });
   }
 
   actualizaLista(){
