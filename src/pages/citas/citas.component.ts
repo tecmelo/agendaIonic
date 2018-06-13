@@ -24,6 +24,8 @@ export class CitasComponent implements OnInit {
  otro=[];
 fechaIinial:any;
 fechaFinal:any;
+to:any;
+from:any;
 
 
   constructor(private _citasService:CitasService,
@@ -88,10 +90,8 @@ fechaFinal:any;
     }
   }
 
-  onChange($event){
-    let from=$event.from._d
-    let to=$event.to._d
-    let filtro=this.getEventosOnRange(from,to);
+  actualizaSecciones(filtro){
+    this.actualizaLista()
     console.log(filtro);
 
     this.getCitas(filtro)
@@ -105,17 +105,29 @@ fechaFinal:any;
     console.log("examenes",this.examenes)
     console.log("otro",this.otro)
     console.log("proyectos",this.proyectos)
-    this.actualizaLista()
+  }
 
+  onChange($event){
+    let from=$event.from._d
+    let to=$event.to._d
+    this.to=to;
+    this.from=from;
+    let filtro=this.getEventosOnRange(from,to);
+    this.actualizaSecciones(filtro);
   }
 
   getEventosOnRange(from,to){
     let citasFiltradas=[];
       for(let cita of this.eventos){
+        console.log(cita)
         let cta=this.sumarDias(new Date(cita.fechaInicio),1)
+        let ctaF=this.sumarDias(new Date(cita.fechaTermino),1)
+        ctaF.setHours(0)
         cta.setHours(0);
-        console.log(cta,"  ",from," ",to)
+        console.log(ctaF,"  ",from," ",to)
         if(cta.getTime()<=to.getTime() && cta.getTime()>=from.getTime()){
+          citasFiltradas.push(cita);
+        }else if(from.getTime()>=cta.getTime()&&from.getTime()<=ctaF.getTime()){
           citasFiltradas.push(cita);
         }
       }
@@ -138,9 +150,20 @@ editaCita(cita){
 presentProfileModal(cita) {
 let profileModal = this.modalCtrl.create(EditarComponent,{cita:cita});
 profileModal.onDidDismiss(data => {
+  this.actualizaLista();
 
 });
 profileModal.present();
+}
+
+
+eliminaCita(cita){
+  this._citasService.eliminaCita(cita.key$).subscribe(res=>{
+    console.log(res)
+    let filtro=this.getEventosOnRange(this.from,this.to);
+    this.actualizaSecciones(filtro);
+  })
+
 }
 
 
