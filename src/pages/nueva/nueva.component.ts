@@ -37,7 +37,7 @@ export class NuevaComponent implements OnInit {
     this._citasService.agregaCita(this.nuevaCita).subscribe(data=>{
       let alert = this.alertCtrl.create({
 title: 'Confirmación',
-subTitle: 'La el evento '+this.nuevaCita.titulo+" se ha guardado",
+subTitle: 'El evento '+this.nuevaCita.titulo+" se ha guardado",
 buttons: ['Aceptar']
 });
 alert.present()
@@ -78,5 +78,5 @@ alert.present()
   }
 
 
-  
+
 }

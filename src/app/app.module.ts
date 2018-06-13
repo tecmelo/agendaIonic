@@ -17,7 +17,9 @@ import {ModalContactosComponent} from '../pages/modal-contactos/modal-contactos.
 import {CitasService} from './services/citas.service';
 import { CalendarModule } from "ion2-calendar";
 import {EditarComponent} from '../pages/editar/editar.component';
-
+import { GoogleMaps } from '@ionic-native/google-maps';
+import {LugarService} from './services/lugar.service';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,10 @@ import {EditarComponent} from '../pages/editar/editar.component';
   providers: [
     StatusBar,
     ContactosService,
+    LocalNotifications,
     CitasService,
+    GoogleMaps,
+    LugarService,
     SplashScreen,
     Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -28,7 +28,7 @@
           <h4>{{cita.hora}}</h4>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button color="danger" (click)="eliminaCita(cita)">
+          <button ion-button color="danger" (click)="presentConfirmDelete(cita)">
             <ion-icon name="trash"></ion-icon>
             Eliminar
           </button>
@@ -57,7 +57,7 @@
 
     </ion-item>
     <ion-item-options side="right">
-      <button ion-button color="danger" (click)="eliminaCita(junta)">
+      <button ion-button color="danger" (click)="presentConfirmDelete(junta)">
         <ion-icon name="trash"></ion-icon>
         Eliminar
       </button>
@@ -83,7 +83,7 @@
       <h4>{{proyecto.hora}}</h4>
     </ion-item>
     <ion-item-options side="right">
-      <button ion-button color="danger" (click)="eliminaCita(proyecto)">
+      <button ion-button color="danger" (click)="presentConfirmDelete(proyecto)">
         <ion-icon name="trash"></ion-icon>
         Eliminar
       </button>
@@ -112,7 +112,7 @@
 
     </ion-item>
     <ion-item-options side="right">
-      <button ion-button color="danger" (click)="eliminaCita(examen)">
+      <button ion-button color="danger" (click)="presentConfirmDelete(examen)">
         <ion-icon name="trash"></ion-icon>
         Eliminar
       </button>
@@ -137,7 +137,7 @@
       <h4>{{otro.hora}}</h4>
     </ion-item>
     <ion-item-options side="right">
-      <button ion-button color="danger" (click)="eliminaCita(otro)">
+      <button ion-button color="danger" (click)="presentConfirmDelete(otro)">
         <ion-icon name="trash"></ion-icon>
         Eliminar
       </button>

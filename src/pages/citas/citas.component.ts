@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarComponentOptions } from 'ion2-calendar'
 import { ModalController, NavParams } from 'ionic-angular';
 import {EditarComponent} from '../editar/editar.component';
-
+import { AlertController } from 'ionic-angular';
+import {LugarService} from '../../app/services/lugar.service';
 import {CitasService} from '../../app/services/citas.service';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
+
 @Component({
   selector: 'app-citas',
   templateUrl: 'citas.component.html',
@@ -25,12 +29,26 @@ export class CitasComponent implements OnInit {
 fechaIinial:any;
 fechaFinal:any;
 to:any;
-from:any;
-
+from:any=null;
+today:any=null;
 
   constructor(private _citasService:CitasService,
-              public modalCtrl: ModalController) {
-    this.actualizaLista()
+              public modalCtrl: ModalController,
+              private alertCtrl: AlertController,
+              private _lugarService:LugarService,
+              private localNotifications: LocalNotifications) {
+
+            this.actualizaLista();
+
+            this.localNotifications.schedule({
+  id: 1,
+  text: 'Single ILocalNotification',
+  data: { secret: "Holas" }
+});
+
+
+
+
   }
 
   actualizaLista(){
@@ -41,6 +59,19 @@ from:any;
         let h=data[key$]
         h.key$=key$;
         this.eventos.push(data[key$])
+      }
+
+
+
+      if(!(this.to&&this.from)){
+        this.today=new Date()
+        console.log("Hoy",this.today);
+        this.today.setHours(0);
+        let filtro=this.getEventosOnRange(this.today,this.today)
+        this.actualizaSecciones(filtro)
+      }else{
+        let filtro=this.getEventosOnRange(this.from,this.to)
+        this.actualizaSecciones(filtro)
       }
       console.log(this.eventos)
     })
@@ -91,7 +122,6 @@ from:any;
   }
 
   actualizaSecciones(filtro){
-    this.actualizaLista()
     console.log(filtro);
 
     this.getCitas(filtro)
@@ -167,7 +197,29 @@ eliminaCita(cita){
 }
 
 
+presentConfirmDelete(cita) {
+  let alert = this.alertCtrl.create({
+    title: 'Eliminación',
+    message: 'Estas seguro que deseas eliminar el evento '+cita.titulo,
+    buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancel'
+      },
+      {
+        text: 'Aceptar',
+        handler: () => {
+          this.eliminaCita(cita);
+        }
+      }
+    ]
+  });
+  alert.present();
+}
+
+
   ngOnInit() {
+
 
   }
 }
