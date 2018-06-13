@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from 'ionic-angular';
+import { ModalController, NavParams, ViewController } from 'ionic-angular';
 
 
 @Component({
@@ -21,8 +21,10 @@ export class EditarComponent implements OnInit {
       invitados:[]
     };
 
-  constructor(private params:NavParams) {
-    //this.cita=this.params.get('cita');
+  constructor(private params:NavParams,
+              public modalCtrl: ModalController,
+              private viewCtrl:ViewController) {
+    this.cita=this.params.get('cita');
     console.log(this.cita);
 
    }
@@ -30,6 +32,11 @@ export class EditarComponent implements OnInit {
    editaCita(){}
    deleteInvitado(){}
    presentProfileModalContacto(){}
+
+   dismiss() {
+
+   this.viewCtrl.dismiss();
+ }
 
 
   ngOnInit() {}
