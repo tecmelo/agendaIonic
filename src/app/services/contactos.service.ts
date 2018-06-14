@@ -12,7 +12,7 @@ export class ContactosService {
               public loadingCtrl: LoadingController) {
     console.log("Servicio iniciado")
     let loading = this.loadingCtrl.create({
-    content: 'Please wait...'
+    content: 'Cargando Aplicación'
   });
 
   loading.present();
@@ -24,8 +24,6 @@ export class ContactosService {
        .then(res => {
          console.log("res",res)
          this.listaContactos=res;
-         this.listaContactos.length=100;
-
           loading.dismiss();
 
        },error => {
