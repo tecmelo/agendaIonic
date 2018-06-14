@@ -28,6 +28,7 @@ export class ContactosService {
 
        },error => {
          console.log("erro",{error:error})
+         loading.dismiss();
        })
 
        console.log(this.listaContactos)
