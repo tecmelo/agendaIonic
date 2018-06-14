@@ -67,7 +67,9 @@ alert.present()
   }
 
 
-  detail($event){}
+  detail($event){
+    console.log($event)
+  }
 
 
     presentProfileModal() {

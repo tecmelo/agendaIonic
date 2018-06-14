@@ -15,7 +15,7 @@ export class ContactosService {
     content: 'Cargando Aplicación'
   });
 
-  //loading.present();
+  loading.present();
 
 
 
