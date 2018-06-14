@@ -20,9 +20,10 @@ export class ContactosService {
 
 
 
-    this.contacts.find(['displayName','phoneNumbers'], {filter: "", multiple: true})
+    this.contacts.find(['displayName', 'phoneNumbers'], {filter: "", multiple: true})
        .then(res => {
          console.log("res",res)
+         
          this.listaContactos=res;
           loading.dismiss();
 
