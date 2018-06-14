@@ -41,6 +41,28 @@ today:any=null;
 
             this.actualizaLista();
             console.log(this.localNotifications.getScheduledIds())
+            this._contactoService.consultaContactos().then(res => {
+                console.log("res",res)
+                res.map((item) =>{
+                  if(item.displayName != null && item.phoneNumbers != null){
+                    this._contactoService.listaContactos.push({displayName:item.displayName,phoneNumbers:item.phoneNumbers})
+                  }
+                })
+
+                let alert = this.alertCtrl.create({
+                  title: 'Confirmación',
+                  message: 'Contactos Listos',
+                  buttons: [
+                    {
+                      text: 'Aceptar',
+                    }
+                  ]
+                });
+                alert.present();
+
+              },error => {
+                console.log("erro",{error:error})
+              })
   }
 
   actualizaLista(){
