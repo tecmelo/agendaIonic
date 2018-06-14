@@ -10,7 +10,7 @@ import { AlertController } from 'ionic-angular';
 })
 export class NuevaComponent implements OnInit {
   listaContactos:any;
-
+  autoComplete;
 
   nuevaCita={
     titulo:"",
@@ -27,7 +27,6 @@ export class NuevaComponent implements OnInit {
               private alertCtrl: AlertController) {
 
     console.log(this.nuevaCita.invitados)
-
                }
 
   ngOnInit() {}
@@ -66,6 +65,9 @@ alert.present()
 
     console.log(this.nuevaCita.invitados);
   }
+
+
+  detail(event$){}
 
 
     presentProfileModal() {

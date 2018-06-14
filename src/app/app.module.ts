@@ -20,6 +20,7 @@ import {EditarComponent} from '../pages/editar/editar.component';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import {LugarService} from './services/lugar.service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    CalendarModule
+    CalendarModule,
+    GooglePlacesAutocompleteComponentModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

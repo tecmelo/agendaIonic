@@ -41,7 +41,7 @@ today:any=null;
 
             this.actualizaLista();
             console.log(this.localNotifications.getScheduledIds())
-            
+
   }
 
   actualizaLista(){
