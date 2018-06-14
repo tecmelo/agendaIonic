@@ -184,6 +184,7 @@ eliminaCita(cita){
   this._citasService.eliminaCita(cita.key$).subscribe(res=>{
     console.log(res)
     let filtro=this.getEventosOnRange(this.from,this.to);
+    this.actualizaLista();
     this.actualizaSecciones(filtro);
   })
 
