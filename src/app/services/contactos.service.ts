@@ -16,6 +16,7 @@ export class ContactosService {
          res.map((item) =>{
            if(item.displayName != null && item.phoneNumbers != null && (i<=100)){
              datosMostar.push({displayName:item.displayName,phoneNumbers:item.phoneNumbers})
+             i++;
            }
          })
          this.listaContactos = datosMostar;
