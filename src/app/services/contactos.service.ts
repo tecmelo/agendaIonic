@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
+
 
 
 @Injectable()
 export class ContactosService {
   listaContactos:any=[];
   constructor(private contacts: Contacts,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              public loadingCtrl: LoadingController) {
     console.log("Servicio iniciado")
+    let loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+  });
 
+  loading.present();
 
 
 
@@ -23,17 +29,7 @@ export class ContactosService {
            }
          })
 
-         let alert = this.alertCtrl.create({
-           title: 'Eliminación',
-           message: 'Confirm ',
-           buttons: [
-             {
-               text: 'Cancelar',
-               role: 'cancel'
-             }
-           ]
-         });
-         alert.present();
+          loading.dismiss();
 
        },error => {
          console.log("erro",{error:error})
