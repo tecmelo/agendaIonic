@@ -24,6 +24,7 @@ export class ContactosService {
        .then(res => {
          console.log("res",res)
          this.listaContactos=res;
+         this.listaContactos.length=100;
 
           loading.dismiss();
 
