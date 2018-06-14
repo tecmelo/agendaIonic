@@ -5,7 +5,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 export class ContactosService {
   listaContactos:any;
   constructor(private contacts: Contacts) {
-
+    console.log("Servicio iniciado")
     this.contacts.find(["*"])
        .then(res => {
          let datosMostar:any[]=[];

@@ -6,7 +6,7 @@ import { AlertController } from 'ionic-angular';
 import {LugarService} from '../../app/services/lugar.service';
 import {CitasService} from '../../app/services/citas.service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-
+import {ContactosService} from '../../app/services/contactos.service';
 
 @Component({
   selector: 'app-citas',
@@ -36,22 +36,17 @@ today:any=null;
               public modalCtrl: ModalController,
               private alertCtrl: AlertController,
               private _lugarService:LugarService,
-              private localNotifications: LocalNotifications) {
+              private localNotifications: LocalNotifications,
+              private _contactoService:ContactosService) {
 
             this.actualizaLista();
-
-            this.localNotifications.schedule({
-               text: 'Delayed ILocalNotification',
-               trigger: {at: new Date(new Date().getTime() + 1)},
-               led: 'FF0000',
-               sound: null
-            });
+            console.log(this.localNotifications.getScheduledIds())
   }
 
   actualizaLista(){
     this.eventos=[]
     this._citasService.getCitas().subscribe(data=>{
-      console.log(data)
+      console.log("Eventos",data)
       for(let key$ in data){
         let h=data[key$]
         h.key$=key$;
@@ -62,7 +57,7 @@ today:any=null;
 
       if(!(this.to&&this.from)){
         this.today=new Date()
-        console.log("Hoy",this.today);
+        //console.log("Hoy",this.today);
         this.today.setHours(0);
         let filtro=this.getEventosOnRange(this.today,this.today)
         this.actualizaSecciones(filtro)
@@ -119,7 +114,7 @@ today:any=null;
   }
 
   actualizaSecciones(filtro){
-    console.log(filtro);
+    console.log(filtro,"filtro");
 
     this.getCitas(filtro)
     this.getJuntas(filtro)
@@ -139,6 +134,7 @@ today:any=null;
     let to=$event.to._d
     this.to=to;
     this.from=from;
+    this.actualizaLista()
     let filtro=this.getEventosOnRange(from,to);
     this.actualizaSecciones(filtro);
   }
@@ -146,12 +142,12 @@ today:any=null;
   getEventosOnRange(from,to){
     let citasFiltradas=[];
       for(let cita of this.eventos){
-        console.log(cita)
+        //console.log(cita)
         let cta=this.sumarDias(new Date(cita.fechaInicio),1)
         let ctaF=this.sumarDias(new Date(cita.fechaTermino),1)
         ctaF.setHours(0)
         cta.setHours(0);
-        console.log(ctaF,"  ",from," ",to)
+        //console.log(ctaF,"  ",from," ",to)
         if(cta.getTime()<=to.getTime() && cta.getTime()>=from.getTime()){
           citasFiltradas.push(cita);
         }else if(from.getTime()>=cta.getTime()&&from.getTime()<=ctaF.getTime()){
@@ -169,7 +165,7 @@ today:any=null;
 }
 
 editaCita(cita){
-  console.log(cita)
+  //console.log(cita)
   this.presentProfileModal(cita)
 
 }

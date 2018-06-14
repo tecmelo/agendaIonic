@@ -23,6 +23,7 @@
              <img src="./assets/imgs/calendar.png">
           </ion-avatar>
           <h2>{{cita.titulo}}</h2>
+          <h5>Con: <span *ngFor="let invitado of cita.invitados">{{invitado.displayName}} </span></h5>
           <h6>{{cita.descripcion}}</h6>
           <h4>{{cita.lugar}}</h4>
           <h4>{{cita.hora}}</h4>
@@ -50,6 +51,7 @@
 <img src="./assets/imgs/calendar.png">
       </ion-avatar>
       <h2>{{junta.titulo}}</h2>
+      <h5>Con: <span *ngFor="let invitado of junta.invitados">{{invitado.displayName}} </span></h5>
       <h6>{{junta.descripcion}}</h6>
       <h4>{{junta.lugar}}</h4>
       <h4>{{junta.hora}}</h4>
@@ -78,6 +80,7 @@
 <img src="./assets/imgs/calendar.png">
       </ion-avatar>
       <h2>{{proyecto.titulo}}</h2>
+      <h5>Con: <span *ngFor="let invitado of proyecto.invitados">{{invitado.displayName}} </span></h5>
       <h6>{{proyecto.descripcion}}</h6>
       <h4>{{proyecto.lugar}}</h4>
       <h4>{{proyecto.hora}}</h4>
@@ -106,6 +109,7 @@
 <img src="./assets/imgs/calendar.png">
       </ion-avatar>
       <h2>{{examen.titulo}}</h2>
+      <h5>Con: <span *ngFor="let examen of cita.invitados">{{invitado.displayName}} </span></h5>
       <h6>{{examen.descripcion}}</h6>
       <h4>{{examen.lugar}}</h4>
       <h4>{{examen.hora}}</h4>
@@ -132,6 +136,7 @@
 <img src="./assets/imgs/calendar.png">
       </ion-avatar>
       <h2>{{otro.titulo}}</h2>
+      <h5>Con: <span *ngFor="let invitado of  otro.invitados">{{invitado.displayName}} </span></h5>
       <h6>{{otro.descripcion}}</h6>
       <h4>{{otro.lugar}}</h4>
       <h4>{{otro.hora}}</h4>
