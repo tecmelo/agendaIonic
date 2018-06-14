@@ -20,14 +20,10 @@ export class ContactosService {
 
 
 
-    this.contacts.find(["*"])
+    this.contacts.find(['displayName','phoneNumbers'], {filter: "", multiple: true})
        .then(res => {
          console.log("res",res)
-         res.map((item) =>{
-           if(item.displayName != null && item.phoneNumbers != null){
-             this.listaContactos.push({displayName:item.displayName,phoneNumbers:item.phoneNumbers})
-           }
-         })
+         this.listaContactos=res;
 
           loading.dismiss();
 
